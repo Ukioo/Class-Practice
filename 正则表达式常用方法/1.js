@@ -59,7 +59,9 @@ var Stext = document.getElementsByTagName('textarea')[1];
 btn.onclick=function(){
     console.log(Ftext.value)
     var str = Ftext.value;
-    var re = /操你妈|日你妈的|尼玛/g;
+    var arr =['操你妈','日你妈的','尼玛','艹','操']
+    var re = new RegExp(arr.join('|'),'g');
+    console.log(re)
     Stext.innerHTML=str.replace(re,function(str){
         var res = '';
         for(var i=0;i<str.length;i++){
@@ -95,3 +97,15 @@ alert(re.test(str3))
 // ^:正则的最开始位置 代表起始的意思
 // $:正则的最后位置 代表结束的意思
 // |:或
+var text =document.getElementById('text');
+var btn2 =document.getElementById('btn2');
+btn2.onclick=function(){
+    var val = text.value;
+    var re =/^[2-9][0-9]$|^1[6-9]$|^10[0-1]$/g;
+    // var re =/[2-9][0-9]\b|1[6-9]\b|10[0-1]\b/g;
+    if(val.match(re)==null){
+        alert('年龄不符合要求')
+    }else{
+        alert('年龄满足')
+    }
+}
