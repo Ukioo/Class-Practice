@@ -30,7 +30,7 @@
 
 var str = 'onetwo';
 var re = /one\b/;
-alert(re.test(str))
+//console.log(re.test(str)) fasle
 
 
 
@@ -70,7 +70,8 @@ btn.onclick=function(){
         return res;
     });
 }
-
+// trim方法 去除空格
+    //ie9以上才支持
 
 //匹配子项： 小括号（） 或者是 分组操作
 // 正则的整体为（母亲）
@@ -86,11 +87,11 @@ btn.onclick=function(){
   //排除：^ 写在[]里 代表排除
 var str2 = 'abcd';
 var re =/a[bcd]c/;
-alert(re.test(str2))
+//alert(re.test(str2))
 //true--
 var str3 = 'abcd';
 var re =/a[^bcd]c/;  //[a-z0-9] 代表a-z 0-9的所有
-alert(re.test(str3))
+//alert(re.test(str3))
 //false--
 
 
@@ -109,3 +110,32 @@ btn2.onclick=function(){
         alert('年龄满足')
     }
 }
+//通过正则获取className的元素
+function getByclass(sClass){
+    var arr=[];
+    var aEle = document.getElementsByTagName('*');
+    var re = RegExp('\\b'+sClass+'\\b');
+    for(var i =0;i<aEle.length;i++){
+        if(re.test(aEle[i].className)){
+            arr.push(aEle[i])
+        }
+    }
+    return arr;
+}
+var box=getByclass('box');
+for(var i=0;i<box.length;i++){
+    box[i].style.background='#965311'
+}
+// 字符串中出现最多 多少次
+var strr='ab753jghdgfbvggggythgjijgggfjued95dppppppppp';
+var Min =-Infinity;
+var s='';
+var strr=strr.split('').sort().join('');
+var re=/(\w)\1+/g;
+strr.replace(re,function($0,$1){
+    if($0.length>Min){
+        Min=$0.length;
+        s=$1;
+    }
+})
+console.log('最多出现的字符是'+s+'  共出现了'+Min+'次')
