@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //  new
+        // new 声明后 return返回的是该对象 this指向的为该对象
+
+
+        var f= new fn();
+        function fn(){
+            alert(this)
+        }
+        function Teacher(name,age){
+            this.name=name;
+            this.age=age;
+            this.say=function(){
+                alert('我的名字叫'+this.name+'   今年我'+this.age)
+        }
+        var t1=new Teacher('陈一发儿',18);
+        console.log(t1)
+        t1.say()
+    </script>
+</body>
+</html>

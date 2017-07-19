@@ -12,6 +12,25 @@
         //封装
         //继承
         //多态
+    function teacher(name,age){
+        // var obj={};
+        // obj.name=name;
+        // obj.age=age;
+        // obj.say=function(){
+        //     alert('我的名字叫'+this.name)
+        // }
+        var obj={
+            name,
+            age,
+            say:function(){
+                alert('我的名字叫'+this.name)
+            }
+        }
+        return obj
+    }
+    var t1=teacher('陈一发儿',18);
+    console.log(t1)
+    t1.say()
 </script>
 </body>
 </html>
