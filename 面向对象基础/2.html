@@ -8,7 +8,8 @@
     <script>
         //  new
         // new 声明后 return返回的是该对象 this指向的为该对象
-
+        //            强制return 且为简单类型的话 return返回的还为该对象
+        //                       为复合类型的话 return返回的为强制return
 
         var f= new fn();
         function fn(){
