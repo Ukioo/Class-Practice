@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    #box{
+        width: 100px;
+        height: 100px;
+        background: red;
+        border: 1px solid #000;
+        position: absolute;
+    }  
+    </style>    
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        //获取元素
+        function Grag(id){
+            this.box=document.getElementById(id);
+            this.disX=0;
+            this.disY=0;
+            //this.init();
+        }
+        Grag.prototype.init=function(){
+            var _this=this;
+            this.box.onmousedown=function(ev){
+                _this.disX=ev.clientX-_this.box.getBoundingClientRect().left;
+                _this.disY=ev.clientY-_this.box.getBoundingClientRect().top;
+                _this.move()
+            }
+        }
+        Grag.prototype.move=function(){
+            var _this=this;
+            document.onmousemove=function(ev){
+                var l=ev.clientX-_this.disX;
+                var t=ev.clientY-_this.disY;
+                _this.box.style.left= l+'px';
+                _this.box.style.top= t+'px';
+                 console.log(l,t)
+                _this.up();
+            }
+        }
+        Grag.prototype.up=function(){
+           
+            document.onmouseup=function(){
+                document.onmousemove = null;
+				document.onmouseup = null;
+            }
+        }
+        var t=new Grag('box')
+        t.init()
+    </script>
+</body>
+</html>

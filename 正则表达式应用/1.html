@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    #box{
+        width: 300px;
+        height: 300px;
+        border: 1px solid #000;
+        position: relative;
+    }
+    #box div{
+        position: absolute;
+        left:0;
+        top:30px;
+        width: 200px;
+        height: 200px;
+        background: #954324;
+        display: none;
+
+    }
+    #box .show{
+        display: block;
+    }
+    .active{
+        background: #084542;
+    }   
+    </style>    
+</head>
+<body>
+    <div id="box">
+        <input type="button" value="按钮1">
+        <input type="button" value="按钮2">
+        <input type="button" value="按钮3">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+    </div>
+    <script>
+        //获取元素
+        function Tab(id){
+            this.box=document.getElementById(id);
+            this.btns=this.box.getElementsByTagName('input');
+            this.divs=this.box.getElementsByTagName('div');
+        }
+        //每个btn添加点击事件
+        Tab.prototype.Event=function(){
+            var _this=this;
+            for(var i=0;i<this.btns.length;i++){
+                this.btns[i].index=i;
+                this.btns[i].onclick=function(){
+                    //alert('1')
+                    _this.change(this)
+                }
+            }
+        }
+        //点击事件后要执行的代码
+        Tab.prototype.change=function(that){
+            for(var i=0;i<this.btns.length;i++){
+                this.btns[i].className=this.divs[i].className=''
+            }
+            that.className='active';
+            this.divs[that.index].className='show';
+        }
+        var t =new Tab('box')
+        //console.log(t)
+        // t.Event() -> 本身没有 -> 通过原型链向构造函数的原型查找方法 .Event -> 执行
+        t.Event()
+    </script>
+</body>
+</html>

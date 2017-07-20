@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //  原型（prototype）:
+        //      函数的一个属性  值为对象 
+        //      添加类样式
+        //      专门处理性能问题的
+        //     实例化对象的__proto__ == 对象的prototype.方法
+        //     对象下有无方法 -> 对象找链(__proto__) -> 构造函数的原型 -> 构造函数原型下的链(__proto__) -> 上一级构造函数的原型
+        function fn(name){
+            this.name=name;
+            // this.say=function(){
+            //     alert('1')
+            // }
+        }
+        // fn.prototype.say=function(){
+        //     alert('我的名字是'+this.name)
+        // }
+        // Function.prototype.say=function(){
+        //     alert('Function')
+        // }
+        Object.prototype.say=function(){
+            alert('Object')
+        }
+        var f1=new fn('冯提莫');
+        var f2=new fn('陈一发');
+        //f1.say()
+        //f2.say()
+        console.log(f1)
+        //console.log(f1.say==f2.say)           true 相同
+        //console.log(f1.say==fn.prototype.say) true 相同
+        f1.say()
+        console.dir(fn.say)
+    </script>
+</body>
+</html>
