@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    div{
+        width: 100%;
+        height: 200px;
+        background: red;
+    }
+    </style>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <script src="jquery-3.2.1.min"></script>
+    <script>
+        function fn(){
+            alert(this)
+        }
+        document.onclick=function(){
+            //alert(this) document  
+            //new fn() object
+            //fn()  window
+        }
+        //$('#div') ID选择器
+        //$('.li') class选择器
+        //$('input[type="button"]') 属性选择器
+        //$('li[class*="li"]') 属性通配符
+        //$('li[class^="li"]') 属性开头选择器
+        //$('li[class$="list"]') 属性结尾选择器
+        //$('li[class!="li"]') 属性排除选择器
+    </script>
+</body>
+</html>
